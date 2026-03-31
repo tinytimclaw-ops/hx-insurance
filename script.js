@@ -381,7 +381,7 @@ async function callHapiCertificate() {
     from: formData.startDate,
     to: formData.endDate,
     destination_id: formData.destId,
-    agent: 'WEB1',
+    agent: 'WT411',
     policySubtype: formData.policySubtype,
     holidayValue: formData.holidayValue,
     family_group_id: 1,
@@ -416,7 +416,7 @@ function buildRedirectUrl(isMedical) {
   const path = isMedical ? '/medicalScreening' : '';
 
   const params = new URLSearchParams({
-    agent: 'WEB1',
+    agent: 'WT411',
     ppts: '',
     customer_ref: '',
     annual_only: formData.coverType === 'annual' ? '1' : '0',
