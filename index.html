@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Comprehensive travel insurance from Holiday Extras. We've got your back with flexible cover for single trips and annual multi-trip policies.">
+
+  <title>Travel Insurance | Holiday Extras</title>
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Travel Insurance - We've Got Your Back">
+  <meta property="og:description" content="Comprehensive travel insurance with medical cover, trip cancellation, and 24/7 support. From £12 per person.">
+  <meta property="og:type" content="website">
+
+  <!-- Preconnect -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://d17s4kc6349e5h.cloudfront.net">
+  <link rel="preconnect" href="https://hapi.holidayextras.co.uk">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "InsuranceAgency",
+    "name": "Holiday Extras",
+    "description": "Comprehensive travel insurance for UK travelers",
+    "url": "https://www.holidayextras.com"
+  }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container">
+      <img src="https://d17s4kc6349e5h.cloudfront.net/holidayextras/assets/images/logos/HolidayExtras-logo-horizontal-transparent.svg"
+           alt="Holiday Extras"
+           class="logo"
+           height="60"
+           width="240">
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero">
+    <picture>
+      <source srcset="assets/hero.webp" type="image/webp">
+      <img src="assets/hero.jpg"
+           alt="We've got your back - Travel Insurance"
+           class="hero-image"
+           width="1600"
+           height="900"
+           loading="eager">
+    </picture>
+  </section>
+
+  <!-- Quote Form -->
+  <section class="quote-section">
+    <div class="container">
+      <div class="quote-card">
+        <div class="quote-header">
+          <h1 class="quote-title">Get your travel insurance quote</h1>
+          <p class="quote-subtitle">Answer a few quick questions to get instant cover</p>
+          <div class="step-indicator">
+            <div class="step active" data-step="1">
+              <span class="step-number">1</span>
+              <span class="step-label">Type</span>
+            </div>
+            <div class="step" data-step="2">
+              <span class="step-number">2</span>
+              <span class="step-label">Destination</span>
+            </div>
+            <div class="step" data-step="3">
+              <span class="step-number">3</span>
+              <span class="step-label">Dates</span>
+            </div>
+            <div class="step" data-step="4">
+              <span class="step-number">4</span>
+              <span class="step-label">Travellers</span>
+            </div>
+            <div class="step" data-step="5">
+              <span class="step-number">5</span>
+              <span class="step-label">Cost</span>
+            </div>
+            <div class="step" data-step="6">
+              <span class="step-number">6</span>
+              <span class="step-label">Medical</span>
+            </div>
+          </div>
+        </div>
+
+        <form class="quote-form" id="quoteForm">
+          <!-- Step 1: Cover Type -->
+          <div class="form-step active" data-step="1">
+            <h2 class="step-title">What type of cover do you need?</h2>
+            <div class="option-grid">
+              <label class="option-card">
+                <input type="radio" name="coverType" value="single" required>
+                <div class="option-content">
+                  <div class="option-icon">✈️</div>
+                  <div class="option-title">Single Trip</div>
+                  <div class="option-description">Perfect for one-off holidays</div>
+                </div>
+              </label>
+              <label class="option-card">
+                <input type="radio" name="coverType" value="annual">
+                <div class="option-content">
+                  <div class="option-icon">🌍</div>
+                  <div class="option-title">Annual Multi-Trip</div>
+                  <div class="option-description">Cover all your trips for a year</div>
+                </div>
+              </label>
+            </div>
+            <button type="button" class="btn-next" onclick="nextStep()">Continue</button>
+          </div>
+
+          <!-- Step 2: Destination -->
+          <div class="form-step" data-step="2">
+            <h2 class="step-title">Where are you travelling?</h2>
+            <div class="form-group">
+              <select id="region" class="form-control" required>
+                <option value="">Select your destination region</option>
+                <option value="UK">UK</option>
+                <option value="Europe">Europe</option>
+                <option value="ANZ">Australia & New Zealand</option>
+                <option value="Worldwide">Worldwide</option>
+              </select>
+            </div>
+            <div class="form-group" id="europeQuestion" style="display: none;">
+              <label class="checkbox-label">
+                <input type="checkbox" id="europeHighRisk">
+                <span>I'm visiting Spain, Cyprus, Malta, Turkey, or Greece</span>
+              </label>
+            </div>
+            <div class="form-group" id="worldwideQuestion" style="display: none;">
+              <label class="checkbox-label">
+                <input type="checkbox" id="worldwideUSA">
+                <span>I'm visiting USA, Canada, Mexico, or the Caribbean</span>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+              <button type="button" class="btn-next" onclick="nextStep()">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 3: Dates -->
+          <div class="form-step" data-step="3">
+            <h2 class="step-title">When are you travelling?</h2>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="startDate" class="form-label">Start date</label>
+                <input type="date" id="startDate" class="form-control" required>
+              </div>
+              <div class="form-group" id="endDateGroup">
+                <label for="endDate" class="form-label">End date</label>
+                <input type="date" id="endDate" class="form-control" required>
+              </div>
+            </div>
+            <p class="form-hint" id="dateHint"></p>
+            <div class="form-actions">
+              <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+              <button type="button" class="btn-next" onclick="nextStep()">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 4: Travellers -->
+          <div class="form-step" data-step="4">
+            <h2 class="step-title">Who's travelling?</h2>
+            <div class="form-group">
+              <label for="travellerCount" class="form-label">Number of travellers</label>
+              <select id="travellerCount" class="form-control" required>
+                <option value="1">1 person</option>
+                <option value="2" selected>2 people</option>
+                <option value="3">3 people</option>
+                <option value="4">4 people</option>
+                <option value="5">5 people</option>
+                <option value="6">6 people</option>
+                <option value="7">7 people</option>
+                <option value="8">8 people</option>
+                <option value="9">9 people</option>
+              </select>
+            </div>
+            <div id="travellerDetails"></div>
+            <div class="form-actions">
+              <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+              <button type="button" class="btn-next" onclick="nextStep()">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 5: Holiday Cost -->
+          <div class="form-step" data-step="5">
+            <h2 class="step-title">What's your holiday cost per person?</h2>
+            <p class="step-description">This helps us provide the right level of cancellation cover</p>
+            <div class="form-group">
+              <select id="holidayValue" class="form-control" required>
+                <option value="">Select cost bracket</option>
+                <option value="500">Up to £500</option>
+                <option value="1000">£500 - £1,000</option>
+                <option value="2500">£1,000 - £2,500</option>
+                <option value="5000">£2,500 - £5,000</option>
+                <option value="6000">£5,000 - £6,000</option>
+                <option value="7000">£6,000 - £7,000</option>
+                <option value="8000">£7,000 - £8,000</option>
+                <option value="9000">£8,000 - £9,000</option>
+                <option value="10000">£9,000 - £10,000</option>
+                <option value="20000">£10,000+</option>
+              </select>
+            </div>
+            <div class="form-actions">
+              <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+              <button type="button" class="btn-next" onclick="nextStep()">Continue</button>
+            </div>
+          </div>
+
+          <!-- Step 6: Medical Screening -->
+          <div class="form-step" data-step="6">
+            <h2 class="step-title">Medical screening</h2>
+            <p class="step-description">Just two quick health questions to ensure you have the right cover</p>
+
+            <div class="medical-question">
+              <p class="question-text">Has anyone travelling ever had, or are they currently experiencing any of the following?</p>
+              <ul class="condition-list">
+                <li>Active cancer treatment or surgery</li>
+                <li>Awaiting test results</li>
+                <li>Terminal illness</li>
+                <li>Addiction treatment in the last 5 years</li>
+                <li>Heart, circulatory, stroke, lung, or bowel conditions</li>
+                <li>Any cancer diagnosis</li>
+                <li>Any physical or psychological condition treated in the last 2 years</li>
+              </ul>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="medicalConditions" value="yes" required>
+                  <span>Yes</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="medicalConditions" value="no">
+                  <span>No</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="medical-question" id="symptomQuestion" style="display: none;">
+              <p class="question-text">Is anyone experiencing symptoms not yet diagnosed by a doctor?</p>
+              <div class="radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="undianosedSymptoms" value="yes">
+                  <span>Yes</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="undiagnosedSymptoms" value="no">
+                  <span>No</span>
+                </label>
+              </div>
+              <p class="warning-text" id="symptomWarning" style="display: none;">
+                ⚠️ Please note: Undiagnosed symptoms won't be covered under your policy
+              </p>
+            </div>
+
+            <div class="form-actions">
+              <button type="button" class="btn-back" onclick="prevStep()">← Back</button>
+              <button type="submit" class="btn-primary" id="getQuoteBtn">Get Your Quote</button>
+            </div>
+
+            <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+              <div class="spinner"></div>
+              <p>Getting your quote...</p>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- Benefits Section -->
+  <section class="benefits">
+    <div class="container">
+      <h2 class="section-title">Why choose Holiday Extras travel insurance?</h2>
+
+      <div class="benefit-grid">
+        <div class="benefit-card">
+          <div class="benefit-icon">🏥</div>
+          <h3 class="benefit-title">Medical cover up to £10m</h3>
+          <p class="benefit-description">Comprehensive emergency medical cover including repatriation</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">✈️</div>
+          <h3 class="benefit-title">Trip cancellation</h3>
+          <p class="benefit-description">Get your money back if you need to cancel for a covered reason</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">⏰</div>
+          <h3 class="benefit-title">24/7 emergency support</h3>
+          <p class="benefit-description">Round-the-clock assistance wherever you are in the world</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🧳</div>
+          <h3 class="benefit-title">Baggage & belongings</h3>
+          <p class="benefit-description">Cover for lost, stolen, or damaged luggage and personal items</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">💰</div>
+          <h3 class="benefit-title">No excess for over 60s</h3>
+          <p class="benefit-description">Senior travelers pay no excess on medical claims</p>
+        </div>
+
+        <div class="benefit-card">
+          <div class="benefit-icon">🏔️</div>
+          <h3 class="benefit-title">Winter sports cover available</h3>
+          <p class="benefit-description">Add skiing and snowboarding cover for just £19 more</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Holiday Extras. All rights reserved. | <a href="https://www.holidayextras.com/terms" class="footer-link">Terms</a> | <a href="https://www.holidayextras.com/privacy" class="footer-link">Privacy</a></p>
+      <p class="small">Holiday Extras Ltd is an appointed representative of ITC Compliance Ltd which is authorised and regulated by the Financial Conduct Authority (their registration number is 313486).</p>
+    </div>
+  </footer>
+</body>
+</html>
